@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Promedio de Notas</title>
+  <script>
+   function obtenerEntrada(mensaje) {
+    return prompt(mensaje)
+   }
+
+   function calcularPromedio(notas) {
+    var total = 0
+    for (var i = 0; i < notas.length; i++) {
+     total += notas[i]
+    }
+    return total / notas.length
+   }
+
+   function calcularPromedioNotas() {
+    var estudiantes = []
+
+    for (var i = 0; i < 5; i++) {
+     var nombre = prompt(
+      'Ingrese el nombre y apellido del estudiante ' + (i + 1) + ':'
+     )
+
+     var edad = parseInt(
+      prompt('Ingrese la edad del estudiante ' + (i + 1) + ':')
+     )
+     var nota = parseFloat(
+      prompt('Ingrese la nota del estudiante ' + (i + 1) + ':')
+     )
+
+     var estudiante = {
+      nombre: nombre,
+      apellido: apellido,
+      edad: edad,
+      nota: nota,
+     }
+     estudiantes.push(estudiante)
+    }
+
+    var notas = estudiantes.map(function (estudiante) {
+     return estudiante.nota
+    })
+
+    var promedio = calcularPromedio(notas)
+
+    document.getElementById('resultado').innerHTML =
+     'El promedio de notas es: ' + promedio
+   }
+  </script>
+ </head>
+ <body>
+  <h1>Calculadora de Promedio de Notas</h1>
+  <button onclick="calcularPromedioNotas()">Calcular Promedio</button>
+  <p id="resultado"></p>
+ </body>
+</html>

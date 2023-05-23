@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clave de acceso</title>
+</head>
+<body>
+          <p>
+           <h1>Acceso al sistema de información</h1>
+         <label for="clave">Clave de acceso:</label>
+         <input type="password" id="clave">
+         <br>
+         <button id="boton" onclick="verificarClave()">Ingresar</button>
+         <br>
+         <p id="mensaje"></p>
+           <script>
+             var intentos = 0;
+     
+             function verificarClave() {
+                 var claveIngresada = document.getElementById("clave").value;
+     
+                 // Verificar si la clave es correcta
+                 if (claveIngresada === "12345") {
+                     // Acceso permitido
+                     document.getElementById("mensaje").innerHTML = "¡Acceso permitido! Bienvenido al sistema.";
+                 } else {
+                     // Incrementar el contador de intentos
+                     intentos++;
+     
+                     if (intentos === 3) {
+                         // Tres intentos fallidos
+                         document.getElementById("mensaje").innerHTML = "Has excedido el número máximo de intentos fallidos. Acceso bloqueado.";
+                         document.getElementById("clave").disabled = true;
+                         document.getElementById("boton").disabled = true;
+                     } else {
+                         // Mostrar mensaje de error
+                         document.getElementById("mensaje").innerHTML = "Clave incorrecta. Intento " + intentos + " de 3.";
+                     }
+                 }
+             }
+         </script>
+          </p>
+
+</body>
+</html>
